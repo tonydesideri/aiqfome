@@ -40,7 +40,8 @@
 				"useFocusableInteractive": "off"
 			},
 			"complexity": {
-				"noForEach": "warn"
+				"noForEach": "warn",
+				"noStaticOnlyClass": "off"
 			},
 			"suspicious": {
 				"noArrayIndexKey": "info",

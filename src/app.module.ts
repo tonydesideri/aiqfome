@@ -1,10 +1,28 @@
 import { Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
+import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
+import { EnvModule } from './common/env'
+import {
+  HttpExceptionFilter,
+  ValidationExceptionFilter,
+} from './common/exception'
+import { LoggingInterceptor } from './common/interceptor'
+import { LoggerModule } from './common/logger'
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [EnvModule, LoggerModule],
+  providers: [
+    {
+      provide: APP_PIPE,
+      useClass: ValidationExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor,
+    },
+  ],
 })
 export class AppModule {}
