@@ -2,15 +2,33 @@ import { Module } from '@nestjs/common'
 import { EnvModule } from 'src/common/env'
 import { Encrypter } from 'src/domain/application/cryptography/encrypter.contract'
 import { Hasher } from 'src/domain/application/cryptography/hasher.contract'
+import { ClientRepository } from 'src/domain/application/repositories/client-repository.contract'
 import { UserRepository } from 'src/domain/application/repositories/user-repository.contract'
+import { CreateClientUseCase } from 'src/domain/application/use-cases/create-client.use-case'
+import { DeleteClientUseCase } from 'src/domain/application/use-cases/delete-client.use-case'
+import { GetClientUseCase } from 'src/domain/application/use-cases/get-client.use-case'
+import { ListClientsUseCase } from 'src/domain/application/use-cases/list-clients.use-case'
 import { SignInUseCase } from 'src/domain/application/use-cases/sign-in.use-case'
+import { UpdateClientUseCase } from 'src/domain/application/use-cases/update-client.use-case'
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
+import { CreateClientController } from './controllers/create-client.controller'
+import { DeleteClientController } from './controllers/delete-client.controller'
+import { GetClientController } from './controllers/get-client.controller'
+import { ListClientsController } from './controllers/list-clients.controller'
 import { SignInController } from './controllers/sign-in.controller'
+import { UpdateClientController } from './controllers/update-client.controller'
 
 @Module({
   imports: [EnvModule, DatabaseModule, CryptographyModule],
-  controllers: [SignInController],
+  controllers: [
+    SignInController,
+    CreateClientController,
+    GetClientController,
+    ListClientsController,
+    UpdateClientController,
+    DeleteClientController,
+  ],
   providers: [
     {
       provide: SignInUseCase,
@@ -20,6 +38,31 @@ import { SignInController } from './controllers/sign-in.controller'
         encrypter: Encrypter
       ) => new SignInUseCase(userRepository, hasher, encrypter),
       inject: [UserRepository, Hasher, Encrypter],
+    },
+    {
+      provide: CreateClientUseCase,
+      useFactory: clientRepository => new CreateClientUseCase(clientRepository),
+      inject: [ClientRepository],
+    },
+    {
+      provide: GetClientUseCase,
+      useFactory: clientRepository => new GetClientUseCase(clientRepository),
+      inject: [ClientRepository],
+    },
+    {
+      provide: ListClientsUseCase,
+      useFactory: clientRepository => new ListClientsUseCase(clientRepository),
+      inject: [ClientRepository],
+    },
+    {
+      provide: UpdateClientUseCase,
+      useFactory: clientRepository => new UpdateClientUseCase(clientRepository),
+      inject: [ClientRepository],
+    },
+    {
+      provide: DeleteClientUseCase,
+      useFactory: clientRepository => new DeleteClientUseCase(clientRepository),
+      inject: [ClientRepository],
     },
   ],
 })
