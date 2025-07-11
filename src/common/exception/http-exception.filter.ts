@@ -10,8 +10,8 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common'
-import type { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
-import type { Response } from 'express'
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
+import { Response } from 'express'
 
 @Catch()
 export class HttpExceptionFilter implements ExceptionFilter {

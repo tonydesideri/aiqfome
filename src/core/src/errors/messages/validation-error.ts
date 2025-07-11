@@ -1,5 +1,5 @@
-import type { UseCaseError } from '../use-case-error.contract'
-import type { ERROR_TYPES } from './error-types'
+import { UseCaseError } from '../use-case-error.contract'
+import { ERROR_TYPES } from './error-types'
 
 export class ValidationError<T extends ERROR_TYPES>
   extends Error

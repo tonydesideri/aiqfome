@@ -4,9 +4,10 @@ import { IsEnum, IsNumber, IsString, validateSync } from 'class-validator'
 enum Environment {
   Development = 'development',
   Production = 'production',
+  Local = 'local',
+  Test = 'test',
   QA = 'qa',
 }
-
 export class EnvVariables {
   @IsEnum(Environment)
   NODE_ENV: Environment
@@ -16,6 +17,9 @@ export class EnvVariables {
 
   @IsNumber()
   PORT: number
+
+  @IsString()
+  JWT_SECRET: string
 }
 
 export function validate(config: Record<string, unknown>) {
