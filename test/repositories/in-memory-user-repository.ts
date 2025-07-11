@@ -4,10 +4,6 @@ import { User } from "src/domain/enterprise/user.entity";
 export class InMemoryUserRepositoryImpl implements UserRepository {
   public items: User[] = [];
 
-  async create(user: User): Promise<void> {
-    this.items.push(user);
-  }
-
   async save(user: User): Promise<void> {
     const index = this.items.findIndex(
       (item) => item.id.toValue() === user.id.toValue(),
