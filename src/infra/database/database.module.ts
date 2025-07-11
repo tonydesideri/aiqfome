@@ -16,4 +16,4 @@ import { PrismaUserRepositoryImpl } from './prisma/repositories/prisma-user-repo
   ],
   exports: [PrismaService, UserRepository],
 })
-export class PersistenceModule {}
+export class DatabaseModule {}

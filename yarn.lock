@@ -547,6 +547,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@faker-js/faker@^9.9.0":
+  version "9.9.0"
+  resolved "https://registry.npmjs.org/@faker-js/faker/-/faker-9.9.0.tgz#3ad015fbbaaae7af3149555e0f22b4b30134c69d"
+  integrity sha512-OEl393iCOoo/z8bMezRlJu+GlRGlsKbUAN7jKB6LhnKoqKve5DXRpalbItIIcwnCjs1k/FOPjFzcA6Qn+H+YbA==
+
 "@inquirer/checkbox@^4.1.2", "@inquirer/checkbox@^4.1.5":
   version "4.1.9"
   resolved "https://registry.npmjs.org/@inquirer/checkbox/-/checkbox-4.1.9.tgz#431c65a3a1fd289be8102034ece15c91dda1ceec"
@@ -1168,7 +1173,7 @@
     jsonc-parser "3.3.1"
     pluralize "8.0.0"
 
-"@nestjs/testing@^11.0.1":
+"@nestjs/testing@^11.1.3":
   version "11.1.3"
   resolved "https://registry.npmjs.org/@nestjs/testing/-/testing-11.1.3.tgz#27b34003f90429fef542b4fe54c5d43f73308b17"
   integrity sha512-CeXG6/eEqgFIkPkmU00y18Dd3DLOIDFhPItzJK1SWckKo6IhcnfoRJzGx75bmuvUMjb51j6An96S/+MJ2ty9jA==
@@ -1262,6 +1267,15 @@
   integrity sha512-b2Z8oV2gwvdCkFemBTFd0x4lsL4O2jLSx8lB7D+XqoFALOQZPa7eAPE1NU0Mj1V8gPHRxIsHnyUNtw2i92psUw==
   dependencies:
     "@prisma/debug" "6.11.1"
+
+"@rollup/pluginutils@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-5.2.0.tgz#eac25ca5b0bdda4ba735ddaca5fbf26bd435f602"
+  integrity sha512-qWJ2ZTbmumwiLFomfzTyt5Kng4hwPi9rwCYN4SHb6eaRU1KNO4ccxINHr/VhH4GgPlt1XfSTLX2LBTme8ne4Zw==
+  dependencies:
+    "@types/estree" "^1.0.0"
+    estree-walker "^2.0.2"
+    picomatch "^4.0.2"
 
 "@rollup/rollup-android-arm-eabi@4.44.2":
   version "4.44.2"
@@ -2091,7 +2105,7 @@ acorn-walk@^8.1.1:
   dependencies:
     acorn "^8.11.0"
 
-acorn@^8.11.0, acorn@^8.14.0, acorn@^8.15.0, acorn@^8.4.1:
+acorn@^8.11.0, acorn@^8.14.0, acorn@^8.14.1, acorn@^8.15.0, acorn@^8.4.1:
   version "8.15.0"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.15.0.tgz#a360898bc415edaac46c8241f6383975b930b816"
   integrity sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==
@@ -3091,6 +3105,11 @@ estraverse@^5.2.0:
   resolved "https://registry.npmjs.org/estraverse/-/estraverse-5.3.0.tgz#2eea5290702f26ab8fe5370370ff86c965d21123"
   integrity sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==
 
+estree-walker@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
+  integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
+
 estree-walker@^3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/estree-walker/-/estree-walker-3.0.3.tgz#67c3e549ec402a487b4fc193d1953a524752340d"
@@ -3521,6 +3540,11 @@ globals@^16.0.0:
   version "16.3.0"
   resolved "https://registry.npmjs.org/globals/-/globals-16.3.0.tgz#66118e765ddaf9e2d880f7e17658543f93f1f667"
   integrity sha512-bqWEnJ1Nt3neqx2q5SFfGS8r/ahumIakg3HcwtNlrVlwXIeNumWn/c7Pn/wKzGhf6SaW6H6uWXLqC30STCMchQ==
+
+globrex@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
+  integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
 gopd@^1.2.0:
   version "1.2.0"
@@ -4341,6 +4365,11 @@ load-esm@1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/load-esm/-/load-esm-1.0.2.tgz#35dbac8a1a3abdb802cf236008048fcc8a9289a6"
   integrity sha512-nVAvWk/jeyrWyXEAs84mpQCYccxRqgKY4OznLuJhJCa0XsPSfdOIr2zvBZEj3IHEHbX97jjscKRRV539bW0Gpw==
+
+load-tsconfig@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.npmjs.org/load-tsconfig/-/load-tsconfig-0.2.5.tgz#453b8cd8961bfb912dea77eb6c168fe8cca3d3a1"
+  integrity sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==
 
 loader-runner@^4.2.0:
   version "4.3.0"
@@ -5536,7 +5565,7 @@ superagent@^10.2.2:
     mime "2.6.0"
     qs "^6.11.0"
 
-supertest@^7.0.0:
+supertest@^7.1.3:
   version "7.1.3"
   resolved "https://registry.npmjs.org/supertest/-/supertest-7.1.3.tgz#3d57ef0edcfbb131929d8b2806129294abe90648"
   integrity sha512-ORY0gPa6ojmg/C74P/bDoS21WL6FMXq5I8mawkEz30/zkwdu0gOeqstFy316vHG6OKxqQ+IbGneRemHI8WraEw==
@@ -5739,6 +5768,11 @@ ts-node@^10.9.2:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
+tsconfck@^3.0.3:
+  version "3.1.6"
+  resolved "https://registry.npmjs.org/tsconfck/-/tsconfck-3.1.6.tgz#da1f0b10d82237ac23422374b3fce1edb23c3ead"
+  integrity sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==
+
 tsconfig-paths-webpack-plugin@4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/tsconfig-paths-webpack-plugin/-/tsconfig-paths-webpack-plugin-4.2.0.tgz#f7459a8ed1dd4cf66ad787aefc3d37fff3cf07fc"
@@ -5845,6 +5879,24 @@ unpipe@1.0.0:
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==
 
+unplugin-swc@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.npmjs.org/unplugin-swc/-/unplugin-swc-1.5.5.tgz#0f183f3890d011df6ab7edfa61c7f503d510141e"
+  integrity sha512-BahYtYvQ/KSgOqHoy5FfQgp/oZNAB7jwERxNeFVeN/PtJhg4fpK/ybj9OwKtqGPseOadS7+TGbq6tH2DmDAYvA==
+  dependencies:
+    "@rollup/pluginutils" "^5.2.0"
+    load-tsconfig "^0.2.5"
+    unplugin "^2.3.5"
+
+unplugin@^2.3.5:
+  version "2.3.5"
+  resolved "https://registry.npmjs.org/unplugin/-/unplugin-2.3.5.tgz#c689d806e2a15c95aeb794f285356c6bcdea4a2e"
+  integrity sha512-RyWSb5AHmGtjjNQ6gIlA67sHOsWpsbWpwDokLwTcejVdOjEkJZh7QKu14J00gDDVSh8kGH4KYC/TNBceXFZhtw==
+  dependencies:
+    acorn "^8.14.1"
+    picomatch "^4.0.2"
+    webpack-virtual-modules "^0.6.2"
+
 update-browserslist-db@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.1.3.tgz#348377dd245216f9e7060ff50b15a1b740b75420"
@@ -5899,6 +5951,15 @@ vite-node@3.2.4:
     es-module-lexer "^1.7.0"
     pathe "^2.0.3"
     vite "^5.0.0 || ^6.0.0 || ^7.0.0-0"
+
+vite-tsconfig-paths@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.npmjs.org/vite-tsconfig-paths/-/vite-tsconfig-paths-5.1.4.tgz#d9a71106a7ff2c1c840c6f1708042f76a9212ed4"
+  integrity sha512-cYj0LRuLV2c2sMqhqhGpaO3LretdtMn/BVX4cPLanIZuwwrkVl+lK84E/miEXkCHWXuq65rhNN4rXsBcOB3S4w==
+  dependencies:
+    debug "^4.1.1"
+    globrex "^0.1.2"
+    tsconfck "^3.0.3"
 
 "vite@^5.0.0 || ^6.0.0 || ^7.0.0-0":
   version "7.0.4"
@@ -5974,6 +6035,11 @@ webpack-sources@^3.2.3:
   version "3.3.3"
   resolved "https://registry.npmjs.org/webpack-sources/-/webpack-sources-3.3.3.tgz#d4bf7f9909675d7a070ff14d0ef2a4f3c982c723"
   integrity sha512-yd1RBzSGanHkitROoPFd6qsrxt+oFhg/129YzheDGqeustzX0vTZJZsSsQjVQC4yzBQ56K55XU8gaNCtIzOnTg==
+
+webpack-virtual-modules@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.npmjs.org/webpack-virtual-modules/-/webpack-virtual-modules-0.6.2.tgz#057faa9065c8acf48f24cb57ac0e77739ab9a7e8"
+  integrity sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==
 
 webpack@5.99.6:
   version "5.99.6"

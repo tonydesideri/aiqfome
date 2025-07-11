@@ -18,7 +18,7 @@ export class SignInController {
   constructor(private signInUseCase: SignInUseCase) {}
 
   @Post()
-  @HttpCode(HttpStatus.NO_CONTENT)
+  @HttpCode(HttpStatus.OK)
   async handle(@Body() body: SignInDto) {
     const { email, password } = body
 

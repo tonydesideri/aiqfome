@@ -3,7 +3,7 @@ import { APP_GUARD } from '@nestjs/core'
 import { JwtModule } from '@nestjs/jwt'
 import { PassportModule } from '@nestjs/passport'
 import { EnvModule, EnvService } from 'src/common/env'
-import { PersistenceModule } from '../database/persistence.module'
+import { DatabaseModule } from '../database/database.module'
 import { JwtStrategy } from './jwt.strategy'
 import { JwtAuthGuard } from './jwt-auth.guard'
 
@@ -11,7 +11,7 @@ import { JwtAuthGuard } from './jwt-auth.guard'
   imports: [
     PassportModule,
     EnvModule,
-    PersistenceModule,
+    DatabaseModule,
     JwtModule.registerAsync({
       imports: [EnvModule],
       inject: [EnvService],

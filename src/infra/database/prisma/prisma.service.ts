@@ -3,7 +3,7 @@ import {
   type OnModuleDestroy,
   type OnModuleInit,
 } from '@nestjs/common'
-import { PrismaClient } from 'generated/prisma'
+import { PrismaClient } from '@prisma/client'
 import { EnvService } from 'src/common/env'
 import { LoggerService } from 'src/common/logger'
 

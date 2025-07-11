@@ -1,5 +1,5 @@
-import { Optional } from '@prisma/client/runtime/library'
-import { AggregateRoot, type UniqueEntityID } from 'src/core/src/entities'
+import { AggregateRoot, UniqueEntityID } from 'src/core/src/entities'
+import { Optional } from 'src/core/src/types'
 
 export interface UserProps {
   email: string
