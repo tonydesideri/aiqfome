@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { ERROR_TYPES, ValidationError } from 'src/core/src/errors'
 import { type Either, failure, success } from 'src/core/src/types'
 import { Favorite } from '../../enterprise/favorite.entity'
+import { ClientRepository } from '../repositories/client-repository.contract'
 import { FavoriteRepository } from '../repositories/favorite-repository.contract'
 import { ProductRepository } from '../repositories/product-repository.contract'
 
@@ -21,13 +22,25 @@ type AddFavoriteUseCaseResponse = Either<
 export class AddFavoriteUseCase {
   constructor(
     private favoriteRepository: FavoriteRepository,
-    private productRepository: ProductRepository
+    private productRepository: ProductRepository,
+    private clientRepository: ClientRepository
   ) {}
 
   async execute({
     clientId,
     productId,
   }: AddFavoriteUseCaseRequest): Promise<AddFavoriteUseCaseResponse> {
+    // Verifica se o cliente existe
+    const client = await this.clientRepository.findById(clientId)
+    if (!client) {
+      return failure(
+        new ValidationError(
+          ERROR_TYPES.RESOURCE_NOT_FOUND,
+          'Cliente não encontrado'
+        )
+      )
+    }
+
     // Verifica se o produto existe na API externa
     const product = await this.productRepository.findById(productId)
     if (!product) {

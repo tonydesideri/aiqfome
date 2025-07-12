@@ -1,5 +1,5 @@
 import { ERROR_TYPES } from 'src/core/src/errors'
-import { makeFavorite } from 'test/factories/make-favorite.factory'
+import { makeClient } from 'test/factories/make-client.factory'
 import {
   InMemoryRepositoriesProps,
   makeInMemoryRepositories,
@@ -16,56 +16,85 @@ describe('AddFavoriteUseCase', () => {
     inMemory = makeInMemoryRepositories()
     sut = new AddFavoriteUseCase(
       inMemory.FavoriteRepository,
-      inMemory.ProductRepository
+      inMemory.ProductRepository,
+      inMemory.ClientRepository
     )
   })
 
   it('should add a favorite successfully', async () => {
+    const client = makeClient()
     const product = makeProduct()
+
+    await inMemory.ClientRepository.create(client)
     inMemory.ProductRepository.items.push(product)
 
     const result = await sut.execute({
-      clientId: 'client-1',
+      clientId: client.id.toString(),
       productId: product.id.toString(),
     })
 
     expect(result.isSuccess()).toBe(true)
     if (result.isSuccess()) {
-      expect(result.value.favorite.clientId).toBe('client-1')
+      expect(result.value.favorite.clientId).toBe(client.id.toString())
       expect(result.value.favorite.productId).toBe(product.id.toString())
     }
   })
 
-  it('should not allow adding duplicate favorite', async () => {
+  it('should return failure if client does not exist', async () => {
     const product = makeProduct()
     inMemory.ProductRepository.items.push(product)
 
-    const existingFavorite = makeFavorite({
-      clientId: 'client-1',
+    const result = await sut.execute({
+      clientId: 'non-existent-client-id',
       productId: product.id.toString(),
     })
-    inMemory.FavoriteRepository.items.push(existingFavorite)
+
+    expect(result.isFailure()).toBe(true)
+    if (result.isFailure()) {
+      expect(result.value.errorType).toBe(ERROR_TYPES.RESOURCE_NOT_FOUND)
+      expect(result.value.message).toBe('Cliente não encontrado')
+    }
+  })
+
+  it('should return failure if product does not exist', async () => {
+    const client = makeClient()
+    await inMemory.ClientRepository.create(client)
 
     const result = await sut.execute({
-      clientId: 'client-1',
+      clientId: client.id.toString(),
+      productId: 'non-existent-product-id',
+    })
+
+    expect(result.isFailure()).toBe(true)
+    if (result.isFailure()) {
+      expect(result.value.errorType).toBe(ERROR_TYPES.RESOURCE_NOT_FOUND)
+      expect(result.value.message).toBe('Produto não encontrado')
+    }
+  })
+
+  it('should return failure if favorite already exists', async () => {
+    const client = makeClient()
+    const product = makeProduct()
+
+    await inMemory.ClientRepository.create(client)
+    inMemory.ProductRepository.items.push(product)
+
+    // Adiciona o primeiro favorito
+    await sut.execute({
+      clientId: client.id.toString(),
+      productId: product.id.toString(),
+    })
+
+    // Tenta adicionar o mesmo favorito novamente
+    const result = await sut.execute({
+      clientId: client.id.toString(),
       productId: product.id.toString(),
     })
 
     expect(result.isFailure()).toBe(true)
     if (result.isFailure()) {
       expect(result.value.errorType).toBe(ERROR_TYPES.RESOURCE_EXISTS)
-    }
-  })
-
-  it('should not allow adding favorite for non-existent product', async () => {
-    const result = await sut.execute({
-      clientId: 'client-1',
-      productId: 'non-existent-id',
-    })
-
-    expect(result.isFailure()).toBe(true)
-    if (result.isFailure()) {
-      expect(result.value.errorType).toBe(ERROR_TYPES.RESOURCE_NOT_FOUND)
+      expect(result.value.message).toBe('Produto já foi favoritado')
     }
   })
 })

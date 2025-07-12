@@ -78,9 +78,13 @@ import { UpdateClientController } from './controllers/update-client.controller'
     },
     {
       provide: AddFavoriteUseCase,
-      useFactory: (favoriteRepository, productRepository) =>
-        new AddFavoriteUseCase(favoriteRepository, productRepository),
-      inject: [FavoriteRepository, ProductRepository],
+      useFactory: (favoriteRepository, productRepository, clientRepository) =>
+        new AddFavoriteUseCase(
+          favoriteRepository,
+          productRepository,
+          clientRepository
+        ),
+      inject: [FavoriteRepository, ProductRepository, ClientRepository],
     },
     {
       provide: GetFavoritesUseCase,

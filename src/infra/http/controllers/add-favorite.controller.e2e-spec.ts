@@ -151,4 +151,27 @@ describe('Add favorite e2e', () => {
     expect(response.statusCode).toBe(409)
     expect(response.body.message[0]).toBe('Produto já foi favoritado')
   })
+
+  test('[POST] /favorites - should return 404 for non-existent client', async () => {
+    // Mock do produto da API externa
+    const mockProduct = makeProduct({
+      title: 'Test Product',
+      price: 99.99,
+      image: 'https://test.com/image.jpg',
+      rating: { rate: 4.5, count: 100 },
+    })
+
+    vi.spyOn(fakeStoreApiService, 'findById').mockResolvedValue(mockProduct)
+
+    const response = await request(app.getHttpServer())
+      .post('/favorites')
+      .set('Authorization', `Bearer ${accessToken}`)
+      .send({
+        clientId: 'non-existent-client-id',
+        productId: '1',
+      })
+
+    expect(response.statusCode).toBe(404)
+    expect(response.body.message[0]).toBe('Cliente não encontrado')
+  })
 })
