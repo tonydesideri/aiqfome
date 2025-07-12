@@ -7,10 +7,11 @@ import {
 } from './common/exception'
 import { LoggingInterceptor } from './common/interceptor'
 import { LoggerModule } from './common/logger'
+import { ExternalModule } from './infra/external/external.module'
 import { HttpModule } from './infra/http/http.module'
 
 @Module({
-  imports: [EnvModule, LoggerModule, HttpModule],
+  imports: [EnvModule, LoggerModule, HttpModule, ExternalModule],
   providers: [
     {
       provide: APP_PIPE,

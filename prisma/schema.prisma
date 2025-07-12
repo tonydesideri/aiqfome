@@ -31,5 +31,20 @@ model Client {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  favorites Favorite[]
+
   @@map("clients")
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  clientId  String   @map("client_id")
+  productId String   @map("product_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  @@unique([clientId, productId])
+  @@map("favorites")
 }
